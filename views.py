@@ -1,7 +1,6 @@
 from flask import render_template,flash,redirect
 from app import app
 import os
-import time
 from flask import request
 from excel_operate import *
 # import forms
@@ -40,7 +39,6 @@ def excel_operat():
             write_url = os.path.join('static', file_name)
             excel_f.save(write_url)
             excel_f.flush()
-            time.sleep(0.5)
             upload_file_names.append(file_name)
             upload_files.append(write_url)
             for sheet in get_visible_names(write_url):
