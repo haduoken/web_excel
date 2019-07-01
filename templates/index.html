@@ -15,16 +15,20 @@
 
 {#    不能填写action 以及enctype要为这个#}
     <form method="post" enctype="multipart/form-data" action="index">
-        <input type="file" name="upload_file">
+        <input type="file" name="upload_file" multiple="">
         <input type="submit" name="insert" value="确认">
     </form>
 
     <h4>   * 已添加文件列表</h4>
+    <form method="post" action="index">
     {% for item in files %}
         <p>
-            {{ item }}
+            <input type="checkbox" name="check_box_list" value="{{ loop.index0 }}"> {{ item }}
         </p>
     {% endfor %}
+    <input type="submit" name="delete" value="删除选择的表格">
+    <input type="submit" name="comfirm_chart" value="确认表格,生成属性">
+    </form>
 
     <hr>
     <h2 style="background-color: antiquewhite">Step 2: 选择属性</h2>
@@ -39,9 +43,15 @@
 
     <hr>
     <h4>   * 已选择属性(注意顺序)</h4>
+    <form method="post" action="index">
+
     {% for item in use_keys %}
-        <p> {{ item }}  </p>
+        <p>
+            <input type="checkbox" name="check_box_list" value="{{ loop.index0 }}"> {{ item }}
+        </p>
     {% endfor %}
+    <input type="submit" name="delete_property" value="删除选择的属性">
+    </form>
     <hr>
 <h2 style="background-color: antiquewhite">Step 3: 确认并生成下载文件</h2>
     <form method="post">
