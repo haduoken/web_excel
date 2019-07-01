@@ -19,7 +19,7 @@
         <input type="submit" name="insert" value="确认">
     </form>
 
-    <h4>   * 已添加文件列表</h4>
+    <h4>   * 已添加文件列表,  '确认表格,生成属性' 按钮会使用下列所有文件，不需要勾选文件然后再点击'确认表格,生成属性'按钮</h4>
     <form method="post" action="index">
     {% for item in files %}
         <p>
@@ -42,7 +42,7 @@
     </form>
 
     <hr>
-    <h4>   * 已选择属性(注意顺序)</h4>
+    <h4>   * 已选择属性(注意顺序) '生成文件'按钮会使用下列所有属性，不需要勾选属性然后再点击 '生成文件' 按钮 </h4>
     <form method="post" action="index">
 
     {% for item in use_keys %}
@@ -72,7 +72,7 @@
         <input type="submit" name="clear" value="清除文件"/>
     </p>
     </form>
-    <script src="/static/js/jquery-3.4.1.min.js"></script>
+{#    <script src="/static/js/jquery-3.4.1.min.js"></script>#}
 
 
 </body>
