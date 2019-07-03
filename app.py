@@ -20,7 +20,7 @@ def main_page():
     session.pop('select_keys',None)
     return render_template('index.html')
 
-@app.route('/index',methods=['GET','POST'])
+@app.route('/combine_excel.html',methods=['GET','POST'])
 def excel_operat():
     
     store_keys=[]
@@ -78,7 +78,7 @@ def excel_operat():
             session['store_keys'] = store_keys
     
     context = dict({'use_keys': select_keys, 'valid_keys': store_keys, 'files': fm.files(),'result_file':result_url})
-    return render_template('index.html',**context)
+    return render_template('combine_excel.html',**context)
 
 class file_manager:
     def __init__(self,folder=None):

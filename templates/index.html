@@ -6,74 +6,7 @@
 </head>
 <body>
 {#    <h1 style="background-color: aquamarine">hello world!</h1>#}
-    <h2 style="background-color: antiquewhite">Step 1: 选择文件</h2>
-{#    <form method="post">#}
-{#        <input type="text" name="username"/>#}
-{#        <input type="password" name="password"/>#}
-{#        <input type="submit" value="提交"/>#}
-{#    </form>#}
-
-{#    不能填写action 以及enctype要为这个#}
-    <form method="post" enctype="multipart/form-data" action="index">
-        <input type="file" name="upload_file" multiple="">
-        <input type="submit" name="insert" value="确认">
-    </form>
-
-    <h4>   * 已添加文件列表,  '确认表格,生成属性' 按钮会使用下列所有文件，不需要勾选文件然后再点击'确认表格,生成属性'按钮</h4>
-    <form method="post" action="index">
-    {% for item in files %}
-        <p>
-            <input type="checkbox" name="check_box_list" value="{{ loop.index0 }}"> {{ item }}
-        </p>
-    {% endfor %}
-    <input type="submit" name="delete" value="删除选择的表格">
-    <input type="submit" name="comfirm_chart" value="确认表格,生成属性">
-    </form>
-
-    <hr>
-    <h2 style="background-color: antiquewhite">Step 2: 选择属性</h2>
-    <form method="post">
-        {% for item in valid_keys %}
-            <input type="checkbox" name="check_box_list" value= {{ loop.index0 }}> {{ item }}
-        {% endfor %}
-        <p>
-        <input type="submit" name="generate" value="添加属性(一次选择一个可以保证属性顺序)"/>
-        </p>
-    </form>
-
-    <hr>
-    <h4>   * 已选择属性(注意顺序) '生成文件'按钮会使用下列所有属性，不需要勾选属性然后再点击 '生成文件' 按钮 </h4>
-    <form method="post" action="index">
-
-    {% for item in use_keys %}
-        <p>
-            <input type="checkbox" name="check_box_list" value="{{ loop.index0 }}"> {{ item }}
-        </p>
-    {% endfor %}
-    <input type="submit" name="delete_property" value="删除选择的属性">
-    </form>
-    <hr>
-<h2 style="background-color: antiquewhite">Step 3: 确认并生成下载文件</h2>
-    <form method="post">
-        <p>
-            <input type="submit" name="done" value="生成文件"/>
-        </p>
-    </form>
-
-    <hr>
-
-<h2 style="background-color: antiquewhite">Step 4: 先下载再清空本次操作 (下载完了记得点一下清空.....)</h2>
-    {% if result_file %}
-        <a href = {{ result_file }} download="result.xlsx">点击下载</a>
-    {% endif %}
-
-    <form method="post">
-    <p>
-        <input type="submit" name="clear" value="清除文件"/>
-    </p>
-    </form>
-{#    <script src="/static/js/jquery-3.4.1.min.js"></script>#}
-
+<a href="combine_excel.html">excel合并</a>
 
 </body>
 </html>
