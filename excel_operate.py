@@ -3,6 +3,7 @@ from pandas import DataFrame
 import os
 import sys
 from openpyxl import load_workbook
+import time
 
 
 def get_visible_names(file):
@@ -27,6 +28,8 @@ def get_keys(file, sheet_name):
 
 def write_file_by_keys(files, store_keys):
     out_frame = DataFrame(columns=store_keys)
+    real_time = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime(time.time()))
+    output_file_name = os.path.join('tmp_files',real_time+'.xlsx')
     for file in files:
         sheet_name = get_visible_names(file)
         if isinstance(sheet_name, list):
@@ -36,9 +39,9 @@ def write_file_by_keys(files, store_keys):
                 keys_use = [key for key in store_keys if key in keys_have]
                 tmp = f[keys_use]
                 out_frame = pd.concat([out_frame, tmp], sort=False)
-    output_excel = os.path.join('static', 'output.xlsx')
-    out_frame.to_excel(output_excel,columns=store_keys)
-    print('write file {} with keys {}'.format(output_excel,keys_use))
+    out_frame.to_excel(output_file_name,columns=store_keys)
+    return output_file_name
+    
 
 def test_print_excel_keys(excel):
     for s in get_visible_names(excel):

@@ -63,8 +63,8 @@
     <hr>
 
 <h2 style="background-color: antiquewhite">Step 4: 先下载再清空本次操作 (下载完了记得点一下清空.....)</h2>
-    {% if done %}
-        <a href="/static/output.xlsx" download="output.xlsx">点击下载</a>
+    {% if result_file %}
+        <a href = {{ result_file }} download="result.xlsx">点击下载</a>
     {% endif %}
 
     <form method="post">
